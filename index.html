@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stormfyre | Projects Index</title>
+    
+    <!-- 1. IMPORT GOOGLE FONT (IM Fell English) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 2. CSS STYLES (Light Blue Theme) --- */
+        
+        :root {
+            /* Light Blue Color Palette */
+            --bg-color: #e3f2fd;       /* Very light blue background */
+            --card-bg: #ffffff;        /* White cards */
+            --text-color: #1565c0;     /* Dark Blue text */
+            --text-secondary: #555555; /* Dark Grey for less important text */
+            --accent-color: #2196f3;   /* Bright Blue for borders/hovers */
+            --shadow-color: rgba(33, 150, 243, 0.15); /* Soft blue shadow */
+        }
+
+        body {
+            /* Main body font stays Segoe UI for readability */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; 
+        }
+
+        h1 {
+            /* NEW FONT SETTINGS - "Ancient Scroll" Vibe */
+            font-family: 'IM Fell English', serif; 
+            font-weight: 400; /* This font is naturally heavy */
+            font-size: 3.5rem; /* Large size to show off the "ink print" texture */
+            margin-bottom: 40px;
+            text-align: center;
+            color: var(--text-color);
+            line-height: 1.1;
+            
+            /* Optional: A very subtle shadow to make it look 'imprinted' */
+            text-shadow: 2px 2px 0px rgba(174, 213, 243, 0.5);
+        }
+
+        /* The Grid Layout */
+        .project-grid {
+            display: grid;
+            width: 100%;
+            max-width: 1200px;
+            /* Auto-fit columns */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            flex: 1; 
+        }
+
+        /* The Card Design */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none; 
+            color: var(--text-secondary);
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 1px solid transparent;
+        }
+
+        /* Hover Effect */
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(33, 150, 243, 0.3);
+            border-color: var(--accent-color);
+        }
+
+        .thumbnail-container {
+            width: 100%;
+            height: 160px;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .thumbnail-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-title {
+            padding: 18px;
+            text-align: center;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        /* Footer Styles */
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-top: 1px solid rgba(21, 101, 192, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; margin-bottom: 20px; }
+            .thumbnail-container { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Rakshann's Projects</h1>
+    <p></p>
+
+    <div class="project-grid" id="grid"></div>
+
+    <div class="footer">
+        Creator Contact: <a href="mailto:rakshann.t@gmail.com">rakshann.t@gmail.com</a>
+    </div>
+
+    <script>
+        /* --- 3. JAVASCRIPT --- */
+
+        const projects = [
+            { name: "Geogle", url: "https://geogle.storm-fyre.workers.dev/", img: "Geogle.png" },
+            { name: "Nationale", url: "https://storm-fyre.github.io/nationle/", img: "Nationale.png" },
+            { name: "WorldWiz", url: "https://storm-fyre.github.io/WorldWiz/", img: "WorldWiz.png" },
+            { name: "Countle", url: "https://storm-fyre.github.io/countle/", img: "Countle.png" },
+            { name: "Trade Explorer", url: "https://storm-fyre.github.io/trade-explorer/", img: "TradeExplorer.png" },
+            { name: "Indic Atlas", url: "https://indicatlas.in/", img: "IndicAtlas.png" },
+            { name: "Prelims PYQ", url: "https://storm-fyre.github.io/prelimspyqs/", img: "PrelimsPYQ.png" },
+            { name: "Silver Solver", url: "https://storm-fyre.github.io/silversolver/", img: "SilverSolver.png" },
+            { name: "Sudoku Solver", url: "https://storm-fyre.github.io/sudoku_solver/", img: "SudokuSolver.png" },
+            { name: "Globle Bot", url: "https://storm-fyre.github.io/globot/", img: "GlobleBot.png" },
+            { name: "Dir Globle Bot", url: "https://storm-fyre.github.io/globot_direction/", img: "DirGlobleBot.png" }
+        ];
+
+        const gridContainer = document.getElementById('grid');
+
+        projects.forEach(project => {
+            const card = document.createElement('a');
+            card.className = 'card';
+            card.href = project.url;
+            card.target = "_blank"; 
+            
+            card.innerHTML = `
+                <div class="thumbnail-container">
+                    <img src="./thumbnails/${project.img}" alt="${project.name}" loading="lazy">
+                </div>
+                <div class="card-title">${project.name}</div>
+            `;
+            
+            gridContainer.appendChild(card);
+        });
+    </script>
+
+</body>
+</html>
